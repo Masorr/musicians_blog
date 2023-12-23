@@ -1,0 +1,1 @@
+web: gunicorn musicians_blog.wsgi
