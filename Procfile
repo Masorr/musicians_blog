@@ -1,1 +1,1 @@
-web: gunicorn musicians_blog.wsgi
+web: gunicorn musiciansblog.wsgi
