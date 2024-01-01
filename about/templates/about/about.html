@@ -5,10 +5,14 @@
 {% block content %}
 <div class="container mt-5">
     <div class="row">
-        <div class="col-12 col-md-4 text-center">
-            <img src="{% static 'images/image-about.jpg' %}" width="90%">
+        <div class="col-12 col-md-6 text-center">
+            {% if "placeholder" in about.about_page_image.url %}
+            <img src="{% static 'images/image-about.jpg' %}" width="90%" alt="placeholder image">
+            {% else %}
+            <img src="{{ about.about_page_image.url }}" width="90%" alt="{{ about.title }}">
+            {% endif %}
         </div>
-        <div class="col-12 col-md-8">
+        <div class="col-12 col-md-6">
             <h2>{{ about.title }}</h2>
             {{ about.description | safe }}
         </div>
