@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from .models import Post, Comment
+from .models import Post, Comment, Profile
 from .forms import CommentForm
 
 # Create your views here.
@@ -91,3 +91,11 @@ def comment_delete(request, slug, comment_id):
         messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+def profile_list(request):
+    '''
+    Profile exclude will exclude logged in user from the list of profiles
+    '''
+    profiles = Profile.objects.exclude(user=request.user)
+    return render(request, 'blog/profile_list.html', {'profiles':profiles})
