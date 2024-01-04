@@ -13,7 +13,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ profile.user.username }}</h5>
                 <p class="card-text">Profile created: {{ profile.created_on }}</p>
-                <a href="#" class="btn btn-primary" style="background-color: #e84610"
+                <a href="{% url 'profile' profile.user.id %}" class="btn btn-primary" style="background-color: #e84610"
                 >View profile</a
                 >
             </div>

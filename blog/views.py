@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -99,3 +99,19 @@ def profile_list(request):
     '''
     profiles = Profile.objects.exclude(user=request.user)
     return render(request, 'blog/profile_list.html', {'profiles':profiles})
+
+def profile(request, pk):
+    '''
+    Renders the user profile page based on the user's authentication status.
+
+    Parameters:
+    - request (HttpRequest) = The HTTP request object.
+    - pk (int) = The primary key of the user profile to be displayed.
+    '''
+    if request.user.is_authenticated:
+        profile = Profile.objects.get(user_id=pk) 
+        return render(request, 'blog/profile.html', {'profile':profile})
+    
+    messages.success(request, ('You must be logged in to view this profile'))
+    return redirect('home')
+        

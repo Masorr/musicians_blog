@@ -4,6 +4,8 @@
 {% url 'account_logout' as logout_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'profile_list' as profile_list_url %}
+{% url 'profile' as profile_url %}
+
 
 <!DOCTYPE html>
 <html class="h-100" lang="en">
@@ -88,6 +90,10 @@
                 <a class="nav-link {% if request.path == profile_list_url %}
                 active{% endif %}" aria-current="page"
                 href="{% url 'profile_list' %}">Profiles</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if request.path == profile_url %}
+                            active{% endif %}" aria-current="page" href="{% url 'profile' pk=request.user.profile.pk %}">My Profile</a>
             </li>
             {% else %}
             <li class="nav-item">

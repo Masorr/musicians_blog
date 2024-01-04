@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+{% if profile %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card mb-4">
+                <h1>Profile of:</h1>
+                <h2>{{ profile.user.username }}</h2>
+                <br>
+                <h4>Bio:</h4>
+                <p>{{ profile.bio }}</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h4>Follows</h4>
+                {% for following in profile.follows.all %}
+                    {% with following.user.username as username %}
+                        {% if username|length > 15 %}
+                            {% with username|slice:":15" as truncated_username %}
+                                <a href="{% url 'profile' following.user.id %}" title="{{ following.user.username }}">@{{ truncated_username }}...</a>
+                            {% endwith %}
+                        {% else %}
+                            <a href="{% url 'profile' following.user.id %}" title="{{ following.user.username }}">@{{ username }}</a>
+                        {% endif %}
+                    {% endwith %}
+                    <br>
+                {% empty %}
+                No users followed yet.
+                {% endfor %}
+            <h4>Followed By</h4>
+                {% for followed_by in profile.followed_by.all %}
+                    {% with followed_by.user.username as username %}
+                        {% if username|length > 15 %}
+                            {% with username|slice:":15" as truncated_username %}
+                            <a href="{% url 'profile' followed_by.user.id %}" title="{{ followed_by.user.username }}">@{{ truncated_username }}...</a>
+                            {% endwith %}
+                        {% else %}
+                            <a href="{% url 'profile' followed_by.user.id %}" title="{{ followed_by.user.username }}">@{{ followed_by.user.username }}</a>
+                        {% endif %}
+                    {% endwith %}
+                    <br>
+                {% empty %}
+                No followers yet.
+                {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}
