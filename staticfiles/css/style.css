@@ -159,3 +159,12 @@ body {
 .approval {
     color: rgb(222, 146, 168);
 }
+
+.author-link {
+    color: white;
+    text-decoration: none;
+}
+
+.author-link:hover {
+    color: #E84610;
+}
