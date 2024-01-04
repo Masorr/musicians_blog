@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
@@ -62,3 +64,19 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+# Makes a profile upon newly made user
+@receiver(post_save, sender=User)
+def make_profile(sender, instance, created, **kwargs):
+    '''
+    Have user follow themself, so that they can access their own
+    Blog posts and comments on their own profile page
+    Remove this in case there isn't time to add this functionality
+    '''
+    if created:
+        user_profile = Profile(user=instance)
+        user_profile.save()
+        # Have user follow themself
+        user_profile.follows.add(user_profile)
+        user_profile.save()
