@@ -45,3 +45,20 @@ class Comment(models.Model):
         ordering = ["created_on"]
     def __str__(self):
         return f"Comment {self.body} by {self.author}"
+
+
+# Create user profile model
+class Profile(models.Model):
+    '''
+    One user is associated with one profile
+    Follows symmetrical = false, stating if you follow someone,
+    they don't have to follow you
+    blank=True, you don't need to have followers or be followed
+    '''
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    follows = models.ManyToManyField("self", symmetrical=False, blank=True, related_name="followed_by")
+    bio = models.TextField(blank=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user.username
