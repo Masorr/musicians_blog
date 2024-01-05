@@ -110,7 +110,17 @@ def profile(request, pk):
     - pk (int) = The primary key of the user profile to be displayed.
     '''
     if request.user.is_authenticated:
-        profile = Profile.objects.get(user_id=pk)
+        profile = get_object_or_404(Profile, user_id=pk)
+
+        if request.method == "POST":
+            current_user_profile = request.user.profile
+            action = request.POST['follow']
+            if action == "unfollow":
+                current_user_profile.follows.remove(profile)
+            elif action == "follow":
+                current_user_profile.follows.add(profile)
+            current_user_profile.save()
+
         return render(request, 'blog/profile.html', {'profile':profile})
     
     messages.success(request, ('You must be logged in to view this profile'))
