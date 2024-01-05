@@ -5,6 +5,7 @@
 
 <div class="container">
     <h1>Profile list</h1>
+    <p>Total Profiles except my own: {{ profile_count }}</p>
     <br />
     {% if profiles %}
         {% for profile in profiles %}

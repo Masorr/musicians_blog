@@ -15,7 +15,13 @@
             </div>
         </div>
         <div class="col-md-4">
-            <h4>Follows</h4>
+            <h4>Follows {{ profile.follows.count }}
+                {% if profile.follows.count == 1 %}
+                user
+                {% else %}
+                users
+                {% endif %}
+            </h4>
                 {% for following in profile.follows.all %}
                     {% with following.user.username as username %}
                         {% if username|length > 30 %}
@@ -30,7 +36,14 @@
                 {% empty %}
                 No users followed yet.
                 {% endfor %}
-            <h4>Followed By</h4>
+            <h4>
+                Followed by {{ profile.followed_by.count }}
+                {% if profile.followed_by.count == 1 %}
+                user
+                {% else %}
+                users
+                {% endif %}
+            </h4>
                 {% for followed_by in profile.followed_by.all %}
                     {% with followed_by.user.username as username %}
                         {% if username|length > 30 %}

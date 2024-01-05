@@ -98,7 +98,8 @@ def profile_list(request):
     Profile exclude will exclude logged in user from the list of profiles
     '''
     profiles = Profile.objects.exclude(user=request.user)
-    return render(request, 'blog/profile_list.html', {'profiles':profiles})
+    profile_count = Profile.objects.exclude(user=request.user).count()
+    return render(request, 'blog/profile_list.html', {'profiles':profiles, "profile_count":profile_count,},)
 
 def profile(request, pk):
     '''
@@ -109,7 +110,7 @@ def profile(request, pk):
     - pk (int) = The primary key of the user profile to be displayed.
     '''
     if request.user.is_authenticated:
-        profile = Profile.objects.get(user_id=pk) 
+        profile = Profile.objects.get(user_id=pk)
         return render(request, 'blog/profile.html', {'profile':profile})
     
     messages.success(request, ('You must be logged in to view this profile'))
