@@ -6,14 +6,12 @@ from django.dispatch import receiver
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
-# maybe remove below?
-def profile_page(request):
-    user = get_object_or_404(User, user=request.user)
-    comments = user.commenter.all()
-
 
 # Create your models here.
 class Post(models.Model):
+    '''
+    Stores a single blog post entry related to :model:`auth.User`
+    '''
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
@@ -28,11 +26,15 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-created_on"]
+
     def __str__(self):
         return f"{self.title} | written by {self.author}"
 
 
 class Comment(models.Model):
+    '''
+    Stores comments related to a :model:`Post` made by :model:`auth.User`
+    '''
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name="comments"
     )
@@ -45,6 +47,7 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ["created_on"]
+
     def __str__(self):
         return f"Comment {self.body} by {self.author}"
 
@@ -52,13 +55,17 @@ class Comment(models.Model):
 # Create user profile model
 class Profile(models.Model):
     '''
+    Stores user profile information related to :model:`auth.User`.
+
     One user is associated with one profile
     Follows symmetrical = false, stating if you follow someone,
     they don't have to follow you
     blank=True, you don't need to have followers or be followed
     '''
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    follows = models.ManyToManyField("self", symmetrical=False, blank=True, related_name="followed_by")
+    follows = models.ManyToManyField(
+        "self", symmetrical=False, blank=True, related_name="followed_by"
+    )
     bio = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
 
@@ -70,6 +77,9 @@ class Profile(models.Model):
 @receiver(post_save, sender=User)
 def make_profile(sender, instance, created, **kwargs):
     '''
+    Creates a profile for a newly created user and sets initial
+    follow relationships.
+
     Have user follow themself, so that they can access their own
     Blog posts and comments on their own profile page
     Remove this in case there isn't time to add this functionality

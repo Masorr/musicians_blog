@@ -1,8 +1,12 @@
 from django.db import models
 from cloudinary.models import CloudinaryField
 
+
 # Create your models here.
 class About(models.Model):
+    '''
+    Stores information related to the `About` page.
+    '''
     title = models.CharField(max_length=200)
     about_page_image = CloudinaryField('image', default='placeholder')
     description = models.TextField()
@@ -13,6 +17,9 @@ class About(models.Model):
 
 
 class CollaborateRequest(models.Model):
+    '''
+    Stores collaboration requests.
+    '''
     name = models.CharField(max_length=200)
     email = models.EmailField()
     message = models.TextField()

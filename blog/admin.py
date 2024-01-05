@@ -5,6 +5,13 @@ from django_summernote.admin import SummernoteModelAdmin
 
 @admin.register(Post)
 class PostAdmin(SummernoteModelAdmin):
+    '''
+    Admin configuration for Post model.
+
+    It includes display preferences, search-related fields,
+    filtration capabilities, and the configuration for
+    Summernote editor applied to the 'content' field.
+    '''
 
     list_display = ('title', 'slug', 'status', 'created_on')
     search_fields = ['title', 'content']

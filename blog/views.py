@@ -19,12 +19,15 @@ def post_detail(request, slug):
     Display an individual :model:'blog.post',
 
     **Context**
-
-    ''``''post''
+    ``post``
         An instance of :model:'blog.Post'.
-    
+    ``comments``
+        All approved comments related to the post.
+    ``comment_count``
+        A count of approved comments related to the post.
+    ``comment_form``
+        An instance of :form:`blog.CommentForm`.
     **Template:**
-
     :template:'blog/post_detail_html'
     """
     queryset = Post.objects.filter(status=1)
@@ -39,9 +42,9 @@ def post_detail(request, slug):
             comment.post = post
             comment.save()
             messages.add_message(
-            request, messages.SUCCESS,
-            'Comment submitted and awaiting approval'
-        )
+                request, messages.SUCCESS,
+                'Comment submitted and awaiting approval'
+            )
 
     comment_form = CommentForm()
 
@@ -53,9 +56,18 @@ def post_detail(request, slug):
         },
     )
 
+
 def comment_edit(request, slug, comment_id):
     """
-    view to edit comments
+    Display an individual comment for edit.
+
+    **Context**
+    ``post``
+        An instance of :model:`blog.Post`.
+    ``comment``
+        A single comment related to the post.
+    ``comment_form``
+        An instance of :form:`blog.CommentForm`.
     """
     if request.method == "POST":
 
@@ -71,14 +83,22 @@ def comment_edit(request, slug, comment_id):
             comment.save()
             messages.add_message(request, messages.SUCCESS, 'Comment Updated!')
         else:
-            messages.add_message(request, messages.ERROR, 'Error updating comment!')
+            messages.add_message(
+                request, messages.ERROR, 'Error updating comment!'
+            )
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
 def comment_delete(request, slug, comment_id):
     """
-    view to delete comment
+    Delete a comment.
+
+    **Context**
+    ``post``
+        An instance of :model:`blog.Post`.
+    ``comment``
+        The comment to be deleted.
     """
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
@@ -88,22 +108,44 @@ def comment_delete(request, slug, comment_id):
         comment.delete()
         messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
     else:
-        messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
+        messages.add_message(
+            request, messages.ERROR, 'You can only delete your own comments!'
+        )
 
     return HttpResponseRedirect(reverse('post_detail', args=[slug]))
 
 
 def profile_list(request):
     '''
-    Profile exclude will exclude logged in user from the list of profiles
+    Renders a list of user profiles excluding the logged-in user.
+
+    **Context**
+    ``profiles``
+        QuerySet of profiles excluding the logged-in user.
+    ``profile_count``
+        The count of profiles excluding the logged-in user.
+
+    **Template:**
+    :template:'blog/profile_list.html'
     '''
     profiles = Profile.objects.exclude(user=request.user)
     profile_count = Profile.objects.exclude(user=request.user).count()
-    return render(request, 'blog/profile_list.html', {'profiles':profiles, "profile_count":profile_count,},)
+    return render(
+        request, 'blog/profile_list.html',
+        {'profiles': profiles, "profile_count": profile_count},
+    )
+
 
 def profile(request, pk):
     '''
     Renders the user profile page based on the user's authentication status.
+
+    **Context**
+    ``profile``
+        The user profile based on the primary key (pk).
+
+    **Template:**
+    :template:'blog/profile.html'
 
     Parameters:
     - request (HttpRequest) = The HTTP request object.
@@ -121,8 +163,7 @@ def profile(request, pk):
                 current_user_profile.follows.add(profile)
             current_user_profile.save()
 
-        return render(request, 'blog/profile.html', {'profile':profile})
-    
+        return render(request, 'blog/profile.html', {'profile': profile})
+
     messages.success(request, ('You must be logged in to view this profile'))
     return redirect('home')
-        
