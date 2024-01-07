@@ -24,7 +24,7 @@ The follow and profile functionality follows from 'Django Wednesdays Twitter #1'
 
 - **Footer**
   
-  - Featured on all pages. Includes social links. (None of the links are real, they just lead to each website's homepage)
+  - Featured on all pages. The icons don't have any links since this blog currently doesn't have any other social presence.
 
 - **Homepage**
 
@@ -144,12 +144,46 @@ The user stories are accessible in the Musician's Blog User Stories project
 
 ### Validator Testing
 
+- HTML
+  - No errors or warnings were found when passing through the W3C HTML validator: <https://validator.w3.org/>
+
+- W3C HTML validator results for HTML pages.
+
+  ![W3C HTML validation](documentation/validate-python.jpg)
+
+- CSS
+  - No errors or warnings were found when passing through the W3C CSS validator: <https://jigsaw.w3.org/css-validator/>
+
+- W3C CSS validator result for style.css.
+
+  ![W3C CSS validation](documentation/validate-css.png)
+
+- JavaScript
+  - One 'error' was found when passing through the JSHint validator: <https://jshint.com/>
+
+- JSHint validator result for javascript file comments.js
+
+  ![JSHint validation](documentation/validate-javascript.png)
+
+  - It states in comments.js that 'bootstrap' is an undefined variable.
+  - However, it is because jshint doesnt recognize bootstrap within the jshint 
+  environment in the base.html, of which post_details.html extends from (post_details.html uses comments.js)
+  - We can find the bootstrap javascript library, below in base.html
+    <!-- Bootstrap CSS -->
+        <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+        crossorigin="anonymous"
+        />
+  - Therefore, this is not really an error.
+
 - Python
   - No errors or warnings were found when passing through the PEP8 python validator: <https://pep8ci.herokuapp.com/>
 
-- PEP8 validator result for run.py
+- PEP8 validator result for python files in musiciansblog project, blog app and about app.
 
-  ![PEP8 validation](documentation/validate-python.jpg)
+  ![PEP8 validation](documentation/validate-python.png)
 
 ### Media
 

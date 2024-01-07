@@ -7,9 +7,11 @@
     <div class="row">
         <div class="col-12 col-md-6 text-center">
             {% if "placeholder" in about.about_page_image.url %}
-            <img src="{% static 'images/image-about.jpg' %}" width="90%" alt="placeholder image">
+            <img class="about-image" src="{% static 'images/image-about.jpg' %}"
+            alt="placeholder image">
             {% else %}
-            <img src="{{ about.about_page_image.url }}" width="90%" alt="{{ about.title }}">
+            <img class="about-image" src="{{ about.about_page_image.url }}"
+            alt="{{ about.title }}">
             {% endif %}
         </div>
         <div class="col-12 col-md-6">
@@ -27,7 +29,8 @@
     <div class="row justify-content-center">
         <div class="col-12 col-md-6 my-5">
             <h2>Let's collaborate!</h2>
-            <p>We believe in the power of shared knowledge and collective effort.
+            <p>We believe in the power of shared knowledge and
+                collective effort.
                 Whether you have a project in mind, wish to co-author
                 an article, or simply want to brainstorm some ideas,
                 We are excited to hear from you. Fill out the form
