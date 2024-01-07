@@ -79,14 +79,7 @@ def make_profile(sender, instance, created, **kwargs):
     '''
     Creates a profile for a newly created user and sets initial
     follow relationships.
-
-    Have user follow themself, so that they can access their own
-    Blog posts and comments on their own profile page
-    Remove this in case there isn't time to add this functionality
     '''
     if created:
         user_profile = Profile(user=instance)
-        user_profile.save()
-        # Have user follow themself
-        user_profile.follows.add(user_profile)
         user_profile.save()
