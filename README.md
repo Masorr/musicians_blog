@@ -1,4 +1,4 @@
-[View the site live here!](https://musicians-blog-a58fa5a0530b.herokuapp.com/drums-the-heartbeat-of-humans/)
+[View the site live here!](https://musicians-blog-a58fa5a0530b.herokuapp.com/)
 
 # Musician's blog
 
@@ -23,6 +23,7 @@ The follow and profile functionality follows from 'Django Wednesdays Twitter #1'
 - **Navigation Bar**
   
   - Featured on all pages. Includes links to logo, Home, About, (Register, Login) or Logout, Profiles, My Profile and is the same on each page for easy navigation.
+  -  Users are displayed as logged in at the top right corner. (Otherwise it will display: "You are not logged in, click 'here' to log in.", in which 'here' links to the login page)
 
 - **Footer**
   
@@ -35,7 +36,6 @@ The follow and profile functionality follows from 'Django Wednesdays Twitter #1'
   - To access more functionalities like commenting on posts or clicking on authors'/users' links to view their profiles, the user has to register and be logged in.
   - If the user is logged in, the navigation bar provides links to essential sections like Home, About, Logout, Profiles and My Profile.
     - Logged in users can comment on posts, and they can also click on authors' or commenters' names, in which it will lead to that user's profile page.
-  - Users are displayed as logged in at the top right corner. (Otherwise it will display: "You are not logged in, click 'here' to log in.", in which 'here' links to the login page)
   - The blog posts' titles serve as clickable links that direct users to detailed view of the blog post.
   - Pagination allows users to navigate through multiple pages of blog posts.
 
@@ -75,77 +75,74 @@ The follow and profile functionality follows from 'Django Wednesdays Twitter #1'
   - See how many and who they follow.
   - See how many and who they are followed by.
 
+### Features Left to Implement
+
+- 1
+  - **Reasons**: 1
+
+- 2
+  - **Reasons**: 2
+
+- 3
+  - **Reasons**: 3
+
 ## User Experience - UX
+
+The design and functionalities of the website is based around user stories and agile methodology.
 
 ### User Stories
 
-![Username](documentation/username.jpg)
+The user stories are accessible in the Musician's Blog User Stories project
+https://github.com/Masorr/musicians_blog/projects?query=is%3Aopen
 
-- **Difficulty**
+- Epic: Posts
+  - #1 As a site user I can view a paginated list of posts so that I can select which post I want to read
+  - #2 As a site user I can click on a post so that I can read the post's content
+  - #3 As a site admin I can create, read, update and delete posts so that I can manage my blog content
+  - #8 As a site admin I can create draft posts so that I can finish writing the content later
 
-  - The user is prompted to select one of three difficulties (easy, normal or hard). This will decide the size of the user's and computer's grids.
-  - Easy will create a 5 by 5 grid (making a 'map' of 25 cells)
-  - Normal creates a 7 by 7 grid (49 cells)
-  - Hard creates a 10 by 10 grid (100 cells)
+- Epic: About Page
+  - #11 As a site admin I can create and update the About information so that I can make it available to users
+  - #12 As a site user I can click on the About link so that read more about the site
 
-![Difficulty](documentation/difficulty.jpg)
+- Epic: Collaboration Requests
+  - #13 As a potential collaborator I can fill in a contact form so that I can submit a request for collaboration
+  - #14 As a site owner I can store collaboration requests in the database so that I can review them
+  - #15 As a site owner I can mark collaboration requests as 'read' so that I can see how many I still need to process
 
-- **Ship randomization**
+- Epic: Comments
+  - #5 As a site user I can leave comments on a post so that I can be involved in the conversation
+  - #6 As a site user / admin I can view the comments on an individual post so that I can read the conversation
+  - #7 As a site user I can modify or delete my comments on a post so that I can be involved in the conversation
+  - #9 As a site admin I can approve or disapprove comments so that I can filter out objectionable comments
 
-  - 5 ships are randomly placed on each corresponding grid once the difficulty (which determines the grid size) has been chosen.
-  - The ships on computer's grid are hidden from player.
-
-![Ship randomization](documentation/ship-randomization.jpg)
-
-- **Score**
-
-  - Displayed above the grids and to the right of the computer's and user's names. It keeps track of how many ships have been eliminated by each competitor.
-
-![Score](documentation/score.jpg)
-
-- **Winner and Restart**
-
-  - A winner will be declared at the end of the game.
-  - The user can choose whether to restart the game or close it.
-
-![Winner](documentation/winner.jpg)
-![Restart](documentation/restart.jpg)
-
-### Features Left to Implement
-
-- Allow player to select placement of ships.
-  - **Reasons**: Lack of time.
-
-- Allow selection of amount of ships.
-  - **Reasons**: Lack of time.
-
-- Have larger ships than single cell ships.
-  - **Reasons**: Lack of time.
-
-- Computer Commenting.
-  - Make the computer do reactive comments on how the game is going by having a list of commentaries it can pull from a google spreadsheet (or equal).
-  - **Reasons**: Lack of time.
+- Epic: User Accounts and Profiles
+  - #4 As a site user I can create/register an account so that I can comment on a post
+  - #10 As a site user I can choose to follow another user so that I can become more involved with the community
+  - #16 As a site user I can visit other users' profiles so that I can become more engaged with the community
 
 ## Design
 
-- **Flowchart**
+- Since the blog is based off Code Institute's CodeStar blog project. The design retains this style.
+
+- **Wireframes**
 
   - The initial game page flowchart.
     ![Flowchart game](flowcharts/flowchart.png)
 
-- **Flowchart / End Design Likeness**
+- **Wireframes / End Design Likeness**
 
-  - Game page
+  - 
 
-    - Flowchart contain the basic ideas of the game.
-    - Flowchart are missing 'restart game' and 'close game' functions. Flowchart is missing winning conditions.
-      - **Reasons**: Coding for the Python game began when sufficient basics in the flowchart were established.
+- **ERD (Entity Relationship Diagrams)**
 
 - **Colours**
 
-  - There are 3 colours in the game. The user is presented with blue colour while the computer is presented with red. The input for typing in coordinates for the user is marked with yellow text. If the game turns out to be a draw, this text will also be in yellow colour.
-  - Texts marked with colours are: competitors' names above their grids, messages when hitting enemy ships (example: 'Computer hit player's ship!' is marked with red), when winning a game (example: '(Username) won the game!' is marked with blue), if the game becomes a draw (marked with yellow), and when typing in coordinates for user (yellow).
-    - **Reasons**: Better UX. Makes the game more visually pleasing and easier to distinguish between user and computer. It also clarifies the 'action' inputs by the user.
+  - There are mainly 4 prevalent colour types.
+  - Light grey (most common). Mostly used as background.
+  - Dark grey (common). For footer, post texts and also to make some contrasting styles.
+  - Greenish (uncommon). Used mostly for buttons or actions the user can perform.
+  - Orange (rare). Used on some buttons.
 
 ## Testing
 
@@ -166,20 +163,21 @@ The follow and profile functionality follows from 'Django Wednesdays Twitter #1'
 ### Media
 
 - Tested on Microsoft Edge, Mozilla Firefox and Chrome.
-- Screen media mockup tested on <https://ui.dev/amiresponsive?url=https://battleships-python-game-4a6d011d8d48.herokuapp.com/>
+- Screen media mockup tested on <https://ui.dev/amiresponsive?url=https://musicians-blog-a58fa5a0530b.herokuapp.com/>
 - Tested on desktop, laptop and mobile.
 
 ### Fixed Bugs
 
-- Failed to upload requirements for heroku. ('pip3 freeze > requirements.txt' in terminal generated requirements that couldn't be deployed)
-  - Bug was fixed by removing all generated requirements except 'termcolor==2.3.0' that was installed to display colours in the terminal.
-  - **Reasons**: Root cause stems from the template. The template should've been <https://github.com/Code-Institute-Org/p3-template>, however the template that was used was <https://github.com/Code-Institute-Org/python-essentials-template>.
-
-- Entering 'yes' in 'Play again? (yes/no):' resulted in the same input message being returned, without actually restarting game.
-  - Bug was fixed by properly breaking and continuing in correct order inside the while loops.
-
-- If the user and computer sinks each other's last ship at the same turn (thus ending the game), the game tells that the computer is the winner. This shouldn't be the case as it should be a draw.
-  - Bug was easily fixed by placing an if statement at the top of the other winning condition statements: which checks if both the user **and** computer doesn't have any ships left, then 'The game is a draw!'.
+- When attempting to make a follow model. A few models were made, migrated and then scrapped. The coder then wanted to update model in profile without doing python3 manage.py blog zero. This was in order to keep the blogs and comments as the coder did not want to loose data.
+- <https://www.postgresql.org/docs/current/sql-droptable.html> by following these steps. The coder went into the database server (elephantSQL) and took took DROP TABLE blog_profile_follows and blog_profile.
+- When attempting to make new migrations and migrate, no changes were made.
+- Coder then attempted to run python3 manage.py migrate blog 0006 to revert to previous migration, error came up
+	django.db.utils.ProgrammingError: table "blog_profile_follows" does not exist. This was because in order to revert back to a previous migration, the tables in elephantsql were needed to be able to revert back, even python3 manage.py blog zero didn't work.
+  - Bug was fixed when coder ran python3 manage.py sqlmigrate blog 0007 to see the SQL code tables generating for elephantSQL. (These include the tables that were wrongly removed from the database). They were then re-added according to <https://www.postgresql.org/docs/current/sql-createtable.html>
+  - The tables were remade for elephantSQL by running
+    - CREATE TABLE "blog_profile" ("id" bigint NOT NULL PRIMARY KEY GENERATED BY DEFAULT AS IDENTITY, "bio" text NOT NULL, "created_on" timestamp with time zone NOT NULL, "user_id" integer NOT NULL UNIQUE);
+    - CREATE TABLE "blog_profile_follows" ("id" bigint NOT NULL PRIMARY KEY GENERATED BY DEFAULT AS IDENTITY, "from_profile_id" bigint NOT NULL, "to_profile_id" bigint NOT NULL);
+    - When these were readded to the database, the coder could run python3 manage.py migrate blog 0006 to modify the models without having to reset all migrations and preventing unnecessary loss of data.
 
 ### Unfixed Bugs
 
@@ -187,34 +185,33 @@ The follow and profile functionality follows from 'Django Wednesdays Twitter #1'
 
 ## Deployment
 
-- The site was deployed using Code Institute's mock terminal for Heroku:
+- The site was deployed to Heroku:
   - Create a new Heroku app.
-  - Add config var with key: 'PORT' and value: '8000'.
-  - Go to settings and set buildpacks to Python and NodeJS, in that order.
+  - Add config var for Cloudinary: 'CLOUDINARY_URL' and value: 'your cloudinary api key'.
+  - Add config var for database: 'DATABASE_URL' and value: 'your postgres database url'.
+  - Add config var for secret key: 'SECRET_KEY' and value: 'your secret key'.
   - Go to deploy, select deployment method (GitHub).
-  - Search for 'battleships' in app to connect to GitHub and connect the repository to Heroku.
+  - Search for 'musicians_blog' in app to connect to GitHub and connect the repository to Heroku.
   - Hit 'deploy branch' at bottom of page.
   - Select 'Open app' at the top of the page.
 
-Link to live site - <https://battleships-python-game-4a6d011d8d48.herokuapp.com/>
+Link to live site - <https://musicians-blog-a58fa5a0530b.herokuapp.com/>
 
 - Cloning the Repository:
   - On the repository page, click the 'Code' box.
-  - Pick local then HTTPS and copy the link that is shown, which is: <https://github.com/Masorr/battleships.git>
+  - Pick local then HTTPS and copy the link that is shown, which is: <https://github.com/Masorr/musicians_blog.git>
   - Open the terminal in your code editor and specify the directory you want to have your clone.
-  - Type 'git clone' into your terminal and paste the link <https://github.com/Masorr/battleships.git> and hit enter.
+  - Type 'git clone' into your terminal and paste the link <https://github.com/Masorr/musicians_blog.git> and hit enter.
 
 ## Credits
 
 ### Content
 
-- Python structuring and understanding of concepts was made with the help by the course material from Code Institute and was heavily inspired by the ULTIMATE Battleships project.
-- Print statement for several rows comes from <https://stackoverflow.com/questions/34980251/how-to-print-multiple-lines-of-text-with-python>
-- Term color comes from <https://www.studytonight.com/python-howtos/how-to-print-colored-text-in-python>
-- Idea for making a list of lists with list comprehension for eventually making grids comes from <https://stackoverflow.com/questions/21507319/list-comprehension-list-of-lists>
-- Idea for hiding ships comes from <https://stackoverflow.com/questions/70220471/how-to-hide-value-in-array-for-battleship-game>
+- The base of the blog comes from Code Institute's CodeStar blog walkthrough project. This most of the functionality of the website. Including home page, pagination of posts, commenting and its CRUD functionality. Login functionality and registering of users and the about page.
+- The profiles, my profile and following of users are credited and heavily inspired to Codemy.com and their Youtube channel <https://www.youtube.com/@Codemycom>. Especially their videos, from 'Django Wednesdays Twitter'. Going from 'Django Wednesdays Twitter #1' to 'Django Wednesdays Twitter #6'.
 
 ## Thanks
 
-- I want to thank Code Institute and their tutors for their program and lessons, and giving me the opportunity to navigate and learn by myself by coding this terminal game in Python.
+- I want to thank Code Institute and their tutors for their program and lessons, and giving me the opportunity to learn by myself by coding this full stack blog website using the django framework.
+- I want to thank Codemy.com and their excellent youtube tutorials.
 - I want to thank the Slack community and my mentor Dick Vlaanderen for feedback and inputs.
