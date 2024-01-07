@@ -4,9 +4,6 @@
 
 Musician's blog is a social blog aimed for users that are interested in anything and everything related about music.
 
-Users will attempt to beat the computer by eliminating its 5 ships before it finds and sinks the user's own 5 ships.
-Each ship occupies one cell on the grid.
-
 Here, users can read blog posts about instruments, songs, or other fascinating topics of the musically inclined.
 They can comment on posts, create their own profiles with bios and also follow other users' profiles to become more engaged with the blog's community.
 
@@ -23,7 +20,7 @@ The follow and profile functionality follows from 'Django Wednesdays Twitter #1'
 - **Navigation Bar**
   
   - Featured on all pages. Includes links to logo, Home, About, (Register, Login) or Logout, Profiles, My Profile and is the same on each page for easy navigation.
-  -  Users are displayed as logged in at the top right corner. (Otherwise it will display: "You are not logged in, click 'here' to log in.", in which 'here' links to the login page)
+  - Users are displayed as logged in at the top right corner. (Otherwise it will display: "You are not logged in, click 'here' to log in.", in which 'here' links to the login page)
 
 - **Footer**
   
@@ -54,31 +51,24 @@ The follow and profile functionality follows from 'Django Wednesdays Twitter #1'
 
 - **Profiles**
 
-  - It is a profile list. It Displays the total count of profiles excluding the current logged in user's profile.
+  - It is a profile list. It Displays the total count of profiles excluding the current logged in user's profile. The profiles are ordered by names in alphabetical order.
   - Each profile entry consists of:
     - **Username:** Displayed as the card title.
     - **Profile Creation Date:** Shows when the profile was created.
     - **View Profile Button:** Redirects to the individual user's profile page.
 
-- **Profile**
+- **Profile / My profile**
 
-  - The profile of another user.
+  - The profile of another user / (Or the logged in user's own profile).
   - Here the user can read a bio about the user.
-  - They can choose to follow or unfollow the specific user by a button.
-  - See how many and who they follow.
-  - See how many and who they are followed by.
-
-- **My Profile**
-
-  - This is the current logged in user's own profile.
-  - Here they can read the bio about themself.
+  - They can choose to follow or unfollow the specific user by a button (Unless they are on their own page. Then the follow button won't be available for them to follow themselves).
   - See how many and who they follow.
   - See how many and who they are followed by.
 
 ### Features Left to Implement
 
-- 1
-  - **Reasons**: 1
+- Blog posts and comments made by a user to show up on their profile page.
+  - **Reasons**: Lack of current knowledge and time.
 
 - 2
   - **Reasons**: 2
@@ -93,7 +83,7 @@ The design and functionalities of the website is based around user stories and a
 ### User Stories
 
 The user stories are accessible in the Musician's Blog User Stories project
-https://github.com/Masorr/musicians_blog/projects?query=is%3Aopen
+<https://github.com/Masorr/musicians_blog/projects?query=is%3Aopen>
 
 - Epic: Posts
   - #1 As a site user I can view a paginated list of posts so that I can select which post I want to read
@@ -124,17 +114,18 @@ https://github.com/Masorr/musicians_blog/projects?query=is%3Aopen
 ## Design
 
 - Since the blog is based off Code Institute's CodeStar blog project. The design retains this style.
+- Only wireframes available are for the new additions. Two of which are profile list page and the profile page.
+- The ERDS show already established models in the CodeStar blog as well as new.
+- The new models here are: **Profile**
 
 - **Wireframes**
 
-  - The initial game page flowchart.
-    ![Flowchart game](flowcharts/flowchart.png)
-
-- **Wireframes / End Design Likeness**
-
-  - 
+  - ![Profiles List](documentation/wireframes/profiles-list.png)
+  - ![Profile Page](documentation/wireframes/profile.png)
 
 - **ERD (Entity Relationship Diagrams)**
+
+  - ![ERD](documentation/erds/erds.png)
 
 - **Colours**
 
@@ -209,6 +200,7 @@ Link to live site - <https://musicians-blog-a58fa5a0530b.herokuapp.com/>
 
 - The base of the blog comes from Code Institute's CodeStar blog walkthrough project. This most of the functionality of the website. Including home page, pagination of posts, commenting and its CRUD functionality. Login functionality and registering of users and the about page.
 - The profiles, my profile and following of users are credited and heavily inspired to Codemy.com and their Youtube channel <https://www.youtube.com/@Codemycom>. Especially their videos, from 'Django Wednesdays Twitter'. Going from 'Django Wednesdays Twitter #1' to 'Django Wednesdays Twitter #6'.
+- Ordering of profiles comes from <https://docs.djangoproject.com/en/5.0/ref/models/expressions/>
 
 ## Thanks
 
