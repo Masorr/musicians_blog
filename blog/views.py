@@ -128,7 +128,7 @@ def profile_list(request):
     **Template:**
     :template:'blog/profile_list.html'
     '''
-    profiles = Profile.objects.exclude(user=request.user)
+    profiles = Profile.objects.exclude(user=request.user).order_by('user__username')
     profile_count = Profile.objects.exclude(user=request.user).count()
     return render(
         request, 'blog/profile_list.html',
