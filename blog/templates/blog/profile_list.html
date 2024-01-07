@@ -3,20 +3,22 @@
 {% block content %}
 
 
-<div class="container">
+<div class="container" style="margin-bottom: 40px;">
     <h1>Profile list</h1>
     <p>Total Profiles except my own: {{ profile_count }}</p>
     <br />
     {% if profiles %}
         {% for profile in profiles %}
         <br>
-        <div class="card" style="width: 18rem; border: solid 5px;">
+        <div class="card" style="width: 18rem; border: solid 5px #188181;">
             <div class="card-body">
                 <h5 class="card-title">{{ profile.user.username }}</h5>
-                <p class="card-text">Profile created: {{ profile.created_on }}</p>
-                <a href="{% url 'profile' profile.user.id %}" class="btn btn-primary" style="background-color: #e84610"
-                >View profile</a
-                >
+                <p class="card-text">Profile created: {{ profile.created_on }}
+                </p>
+                <a href="{% url 'profile' profile.user.id %}" 
+                class="btn btn-primary" style="background-color: #e84610"
+                aria-label="View profile of {{ profile.user.username }}">
+                View profile</a>
             </div>
         </div>
         {% endfor %}
