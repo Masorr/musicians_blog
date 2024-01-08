@@ -168,8 +168,13 @@ The user stories are accessible in the Musician's Blog User Stories project
 
 ### Manual Testing
 
+There have been extensive manual testing of the site.
+Testing of every major feature both on site and in django admin panel.
+Below is a list of specific manual tests.
+
 ![Testing-1](documentation/tests-1.png)
 ![Testing-2](documentation/tests-2.png)
+![Testing-3](documentation/tests-3.png)
 
 ### Validator Testing
 
@@ -279,6 +284,16 @@ Link to live site - <https://musicians-blog-a58fa5a0530b.herokuapp.com/>
   - Pick local then HTTPS and copy the link that is shown, which is: <https://github.com/Masorr/musicians_blog.git>
   - Open the terminal in your code editor and specify the directory you want to have your clone.
   - Type 'git clone' into your terminal and paste the link <https://github.com/Masorr/musicians_blog.git> and hit enter.
+
+## Disclaimer
+
+- The project was entirely made in the Codeanywhere IDE. Which has caused several issues such as:
+  - Slow loading of pages.
+  - Workspaces taking several hours to launch
+  - Workspaces becoming corrupt, causing the coder to having to destroy the workspace, and make a new one with an older push from GitHub.
+  - Approximate loss of working time due to these issues: 2-3 days.
+
+Considering these issues. The coder has decided to be moving to other IDE's, likely GitPod IDE, as Codeanywhere has been unreliable during time constraints.
 
 ## Credits
 
