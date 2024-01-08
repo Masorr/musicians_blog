@@ -70,11 +70,8 @@ The follow and profile functionality follows from 'Django Wednesdays Twitter #1'
 - Blog posts and comments made by a user to show up on their profile page.
   - **Reasons**: Lack of current knowledge and time.
 
-- 2
-  - **Reasons**: 2
-
-- 3
-  - **Reasons**: 3
+- Implement like system for blog posts and see amount of likes. Allowing users to give positive feedback to posts.
+  - **Reasons**: Lack of time.
 
 ## User Experience - UX
 
@@ -145,7 +142,7 @@ The user stories are accessible in the Musician's Blog User Stories project
 ### Validator Testing
 
 - HTML
-  - No errors or warnings were found when passing through the W3C HTML validator: <https://validator.w3.org/>
+  - No errors were found when passing through the W3C HTML validator: <https://validator.w3.org/>
 
 - W3C HTML validator results for HTML pages.
 
@@ -235,6 +232,14 @@ Link to live site - <https://musicians-blog-a58fa5a0530b.herokuapp.com/>
 - The base of the blog comes from Code Institute's CodeStar blog walkthrough project. This most of the functionality of the website. Including home page, pagination of posts, commenting and its CRUD functionality. Login functionality and registering of users and the about page.
 - The profiles, my profile and following of users are credited and heavily inspired to Codemy.com and their Youtube channel <https://www.youtube.com/@Codemycom>. Especially their videos, from 'Django Wednesdays Twitter'. Going from 'Django Wednesdays Twitter #1' to 'Django Wednesdays Twitter #6'.
 - Ordering of profiles comes from <https://docs.djangoproject.com/en/5.0/ref/models/expressions/>
+
+### Media
+
+- All images were taken from pexels.com <https://www.pexels.com/>
+  - images by ROMBO <https://www.pexels.com/@rombo-1510555/>
+    - workspaces/musicians_blog/static/images/default.jpg
+  - images by Pixabay <https://www.pexels.com/@pixabay/>
+    - workspaces/musicians_blog/static/images/image-about.jpg
 
 ## Thanks
 
