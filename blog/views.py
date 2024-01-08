@@ -121,14 +121,18 @@ def profile_list(request):
 
     **Context**
     ``profiles``
-        QuerySet of profiles excluding the logged-in user.
+        QuerySet of profiles excluding the logged-in user, and ordering them.
     ``profile_count``
         The count of profiles excluding the logged-in user.
 
     **Template:**
     :template:'blog/profile_list.html'
     '''
-    profiles = Profile.objects.exclude(user=request.user).order_by('user__username')
+    profiles = (
+        Profile.objects
+        .exclude(user=request.user)
+        .order_by('user__username')
+    )
     profile_count = Profile.objects.exclude(user=request.user).count()
     return render(
         request, 'blog/profile_list.html',

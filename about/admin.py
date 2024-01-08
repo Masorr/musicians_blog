@@ -27,7 +27,8 @@ class AboutAdmin(SummernoteModelAdmin):
 @admin.register(CollaborateRequest)
 class CollaborateRequestAdmin(admin.ModelAdmin):
     '''
-    The list display includes the 'message' and 'read' fields for 'CollaborateRequest' instances.
+    The list display includes the 'message' and 'read'
+    fields for 'CollaborateRequest' instances.
     '''
 
     list_display = ('message', 'read',)
