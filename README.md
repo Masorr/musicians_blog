@@ -43,7 +43,16 @@ The follow and profile functionality follows from 'Django Wednesdays Twitter #1'
   - ![Login required](documentation/login-required.png)
 
 - **Post detail**
-  - Details
+  - A detailed overview of a blog post that has been clicked on from the homepage.
+  - It includes the following elements:
+    - **Post Title**: The title of the blog post.
+    - **Author Information**: Details about the author of the post, including their profile link on their username and the date/time of the post's creation.
+    - **Content**: The main body of the blog post.
+    - **Comments**: User comments related to the blog post, here the user can see the amount of comments on a post, the commenters' usernames (which can be clicked and then the user is directed towards the commenter's profile), and date when they were modified.
+    - **Comment Form**: A form allowing logged-in users to submit new comments on the post.
+    - **Comment Editing**: Logged in users can edit their comment.
+    - **Comment Deletion**: Logged in users can delete their comment.
+    - **Comment Approval**: Comments are not visible unless they are approved by a site admin (currently available only in django admin panel).
   - ![Post 1](documentation/post-1.png)
   - ![Post 2](documentation/post-2.png)
 
@@ -83,6 +92,9 @@ The follow and profile functionality follows from 'Django Wednesdays Twitter #1'
   - ![My profile](documentation/my-profile.png)
 
 ### Features Left to Implement
+
+- Truncate blog posters name and commenter (in post details).
+  - **Reasons**: Lack of time.
 
 - Insert ability for users to write their bios on profile page without having to access django admin panel.
   - **Reasons**: Lack of time.
@@ -217,9 +229,8 @@ The user stories are accessible in the Musician's Blog User Stories project
 - About page
   - ![Lighthouse about page](documentation/lighthouse-about.png)
 - Register / Login / Logout
-  - They are nearly identical, and is here presented with just one image.
-  - Lighthouse has been run on all three pages:
-  - Register page, Login page, and Logout page
+  - The coder chose to group the lighthouse for these together.
+  - The one which performed worst was taken, which was sign up page.
   - ![Lighthouse login page](documentation/lighthouse-login.png)
 - Profiles
   - ![Lighthouse profiles list page](documentation/lighthouse-profiles-list.png)
@@ -243,7 +254,11 @@ The user stories are accessible in the Musician's Blog User Stories project
 
 ### Unfixed Bugs
 
-- There are no known unfixed bugs.
+- User can't submit comments on posts. The code worked before, but now when the user hits submit they receive a 'Server Error (500)' message.
+  - It shows an IntegrityError, with a null value in column "user_id" of relation "blog_comment". However there shouldn't be a 'null' value being sent, as this hadn't occured previously.
+  - Coder have tried extensively to find the cause of the problem.
+  - Tutor Support at Code Institute was contacted and have looked at the code, but were unable to find a solution to the problem.
+  - **Reasons**: Lack of time and current understanding how to fix this issue.
 
 ## Deployment
 
