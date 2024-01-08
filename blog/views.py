@@ -163,8 +163,10 @@ def profile(request, pk):
             action = request.POST['follow']
             if action == "unfollow":
                 current_user_profile.follows.remove(profile)
+                messages.error(request, f'You have unfollowed {profile} ')
             elif action == "follow":
                 current_user_profile.follows.add(profile)
+                messages.success(request, f'You are now following {profile} ')
             current_user_profile.save()
 
         return render(request, 'blog/profile.html', {'profile': profile})
