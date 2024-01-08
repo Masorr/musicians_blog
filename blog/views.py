@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from .models import Post, Comment, Profile
 from .forms import CommentForm
@@ -38,7 +39,7 @@ def post_detail(request, slug):
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
             comment = comment_form.save(commit=False)
-            comment.author = request.user
+            comment.author = User.objects.get(id=request.user.id)
             comment.post = post
             comment.save()
             messages.add_message(
