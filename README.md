@@ -21,10 +21,13 @@ The follow and profile functionality follows from 'Django Wednesdays Twitter #1'
   
   - Featured on all pages. Includes links to logo, Home, About, (Register, Login) or Logout, Profiles, My Profile and is the same on each page for easy navigation.
   - Users are displayed as logged in at the top right corner. (Otherwise it will display: "You are not logged in, click 'here' to log in.", in which 'here' links to the login page)
+  - ![Navigation (logged in)](documentation/logged-in.png)
+  - ![Navigation (logged out)](documentation/logged-out.png)
 
 - **Footer**
   
   - Featured on all pages. The icons don't have any links since this blog currently doesn't have any other social presence.
+  - ![Footer](documentation/footer.png)
 
 - **Homepage**
 
@@ -35,12 +38,21 @@ The follow and profile functionality follows from 'Django Wednesdays Twitter #1'
     - Logged in users can comment on posts, and they can also click on authors' or commenters' names, in which it will lead to that user's profile page.
   - The blog posts' titles serve as clickable links that direct users to detailed view of the blog post.
   - Pagination allows users to navigate through multiple pages of blog posts.
+  - ![Homepage 1](documentation/homepage-1.png)
+  - ![Homepage 2](documentation/homepage-2.png)
+  - ![Login required](documentation/login-required.png)
+
+- **Post detail**
+  - Details
+  - ![Post 1](documentation/post-1.png)
+  - ![Post 2](documentation/post-2.png)
 
 - **About**
 
   - The About page showcases a combination of text (right side) and an accompanying image (left side) and is used to convey the essence of the blog, its objectives, and its focus on various aspects of music.
   - The About page shows when it was last updated.
   - **Collaboration Form:** Users are encouraged to collaborate or reach out through a form present on the page.
+  - ![About](documentation/about.png)
 
 - **Register, Login and Logout**
 
@@ -48,6 +60,7 @@ The follow and profile functionality follows from 'Django Wednesdays Twitter #1'
     - **Register:** Users can create an account by registering through the provided registration form.
     - **Login:** Registered users can log in using their credentials via the login form.
     - **Logout:** Allows logged-in users to sign out securely from their accounts.
+    - ![Register / Login / Logout](documentation/login.png)
 
 - **Profiles**
 
@@ -56,6 +69,7 @@ The follow and profile functionality follows from 'Django Wednesdays Twitter #1'
     - **Username:** Displayed as the card title.
     - **Profile Creation Date:** Shows when the profile was created.
     - **View Profile Button:** Redirects to the individual user's profile page.
+    - ![Profile list](documentation/profile-list.png)
 
 - **Profile / My profile**
 
@@ -64,8 +78,14 @@ The follow and profile functionality follows from 'Django Wednesdays Twitter #1'
   - They can choose to follow or unfollow the specific user by a button (Unless they are on their own page. Then the follow button won't be available for them to follow themselves).
   - See how many and who they follow.
   - See how many and who they are followed by.
+  - ![Profile 1](documentation/profile-1.png)
+  - ![Profile 2](documentation/profile-2.png)
+  - ![My profile](documentation/my-profile.png)
 
 ### Features Left to Implement
+
+- Insert ability for users to write their bios on profile page without having to access django admin panel.
+  - **Reasons**: Lack of time.
 
 - Blog posts and comments made by a user to show up on their profile page.
   - **Reasons**: Lack of current knowledge and time.
@@ -187,6 +207,26 @@ The user stories are accessible in the Musician's Blog User Stories project
 - Tested on Microsoft Edge, Mozilla Firefox and Chrome.
 - Screen media mockup tested on <https://ui.dev/amiresponsive?url=https://musicians-blog-a58fa5a0530b.herokuapp.com/>
 - Tested on desktop, laptop and mobile.
+
+### Lighthouse Testing
+
+- Home page
+  - ![Lighthouse home page](documentation/lighthouse-home.png)
+- Post detail page
+  - ![Lighthouse post detail page](documentation/lighthouse-post-detail.png)
+- About page
+  - ![Lighthouse about page](documentation/lighthouse-about.png)
+- Register / Login / Logout
+  - They are nearly identical, and is here presented with just one image.
+  - Lighthouse has been run on all three pages:
+  - Register page, Login page, and Logout page
+  - ![Lighthouse login page](documentation/lighthouse-login.png)
+- Profiles
+  - ![Lighthouse profiles list page](documentation/lighthouse-profiles-list.png)
+- Profile
+  - ![Lighthouse profile page](documentation/lighthouse-profile.png)
+- My profile
+  - ![Lighthouse my profile page](documentation/lighthouse-my-profile.png)
 
 ### Fixed Bugs
 
