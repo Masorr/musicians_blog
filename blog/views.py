@@ -129,16 +129,21 @@ def profile_list(request):
     **Template:**
     :template:'blog/profile_list.html'
     '''
-    profiles = (
-        Profile.objects
-        .exclude(user=request.user)
-        .order_by('user__username')
-    )
-    profile_count = Profile.objects.exclude(user=request.user).count()
-    return render(
-        request, 'blog/profile_list.html',
-        {'profiles': profiles, "profile_count": profile_count},
-    )
+    if request.user.is_authenticated:
+
+        profiles = (
+            Profile.objects
+            .exclude(user=request.user)
+            .order_by('user__username')
+        )
+        profile_count = Profile.objects.exclude(user=request.user).count()
+        return render(
+            request, 'blog/profile_list.html',
+            {'profiles': profiles, "profile_count": profile_count},
+        )
+        
+    messages.success(request, ('You must be logged in to access the profiles list'))
+    return redirect('home')
 
 
 def profile(request, pk):
